@@ -7,16 +7,31 @@ const migrations = [
     sub_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     url VARCHAR(500) NOT NULL,
     secret VARCHAR(100) NOT NULL,
+    is_active BOOLEAN DEFAULT TRUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_sub_id (sub_id)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4`,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Indexes for performance
+    INDEX idx_sub_id (sub_id),
+    INDEX idx_url (url(100)),
+    INDEX idx_is_active (is_active),
+    INDEX idx_created_at (created_at),
+    INDEX idx_url_active (url(100), is_active),
+    
+    -- Unique constraint on URL
+    UNIQUE KEY unique_url (url)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`,
 
   `CREATE TABLE IF NOT EXISTS subscribe_data (
     tx_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     message TEXT NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    INDEX idx_tx_id (tx_id)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4`,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Indexes
+    INDEX idx_tx_id (tx_id),
+    INDEX idx_created_at (created_at)
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci`,
 ];
 
 export const runMigrations = async (config: Config) => {
@@ -36,7 +51,6 @@ const start = async () => {
     const app = await createApp();
     const config = app.getEnvs() as Config;
     await runMigrations(config);
-    console.log("Migration success");
   } catch (err) {
     console.error("Failed to migrate server:", err);
   } finally {

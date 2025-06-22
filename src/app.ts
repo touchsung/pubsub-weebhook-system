@@ -62,10 +62,7 @@ export const createApp = async (): Promise<FastifyInstance> => {
     "cacheService",
     () => new CacheService(container.resolve("redisConnection"))
   );
-  container.register(
-    "webhookService",
-    () => new WebhookService(config.JWT_SECRET)
-  );
+  container.register("webhookService", () => new WebhookService());
   container.register(
     "pubSubService",
     () =>
