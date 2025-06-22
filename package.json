@@ -1,0 +1,38 @@
+{
+    "name": "pubsub-webhook-system",
+    "version": "1.0.0",
+    "description": "Production-ready pub/sub webhook system with functional programming",
+    "main": "dist/server.js",
+    "scripts": {
+        "dev": "tsx watch src/server.ts",
+        "dev:receiver": "tsx src/webhook-receiver.ts",
+        "build": "tsc",
+        "start": "node dist/server.js",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "db:migrate": "tsx src/infrastructure/database/migrate.ts",
+        "setup": "chmod +x setup.sh && ./setup.sh"
+    },
+    "dependencies": {
+        "fastify": "^4.24.3",
+        "@fastify/env": "^4.2.0",
+        "@fastify/cors": "^8.4.0",
+        "fp-ts": "^2.16.1",
+        "io-ts": "^2.2.20",
+        "ioredis": "^5.3.2",
+        "mysql2": "^3.6.3",
+        "jsonwebtoken": "^9.0.2",
+        "nanoid": "^5.0.3",
+        "pino": "^8.16.1"
+    },
+    "devDependencies": {
+        "@types/node": "^20.8.6",
+        "@types/jsonwebtoken": "^9.0.4",
+        "@fastify/env": "^4.2.0",
+        "supertest": "^6.3.3",
+        "@types/supertest": "^2.0.15",
+        "tsx": "^3.14.0",
+        "typescript": "^5.2.2"
+    }
+}

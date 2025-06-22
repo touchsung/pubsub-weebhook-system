@@ -1,0 +1,127 @@
+# Git
+.git
+.gitignore
+.gitattributes
+README.md
+CHANGELOG.md
+LICENSE
+
+# Node.js
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.yarn-integrity
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
+dist
+build
+coverage
+
+# TypeScript
+*.tsbuildinfo
+
+# Testing
+coverage/
+test-results/
+*.lcov
+.nyc_output
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Temporary directories
+tmp/
+temp/
+
+# Documentation (if you don't want it in the image)
+docs/
+*.md
+!README.md
+
+# Development tools
+.eslintrc*
+.prettierrc*
+jest.config.*
+*.config.js
+*.config.ts
+
+# Source maps
+*.map
+
+# Development Docker files (if you have separate dev/prod dockerfiles)
+docker-compose.yml
+docker-compose.dev.yml
+docker-compose.override.yml
+Dockerfile.dev
+
+# Scripts that shouldn't be in production
+scripts/
+setup.sh
+test-*.sh
+
+# Development dependencies that aren't needed in production
+.editorconfig
+.gitkeep
+
+# Local database files
+*.sqlite
+*.sqlite3
+*.db
+
+# Backup files
+*.backup
+*.bak
+
+# Application specific files you don't want in the image
+uploads/
+static/user-uploads/
+
+# Cache directories
+.cache/
+.parcel-cache/
+
+# Package manager lock files (optional - depends on your strategy)
+# package-lock.json
+# yarn.lock
+
+# Development configuration files
+.env.example
+config/development.json
+config/test.json
+
+# Local development tools
+.vscode/
+.devcontainer/
